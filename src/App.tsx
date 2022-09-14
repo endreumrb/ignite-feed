@@ -2,11 +2,15 @@ import React from 'react';
 
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import Post from './components/Post';
+import Post, { PostProps } from './components/Post';
 
 import styles from './App.module.css';
 
-const posts = [
+interface Post extends PostProps {
+  id: number;
+}
+
+const posts: Post[] = [
   {
     id: 1,
     author: {
@@ -14,7 +18,7 @@ const posts = [
       name: 'Endreu Benites',
       role: 'Front End Developer'
     },
-    publishAt: new Date('2022-05-03 20:00:00'),
+    publishedAt: new Date('2022-05-03 20:00:00'),
     content: [
       { type: 'paragraph', content: 'Fala galeraa 👋' },
       { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
@@ -28,7 +32,7 @@ const posts = [
       name: 'Diego Fernandes',
       role: 'CTO @Rocketseat'
     },
-    publishAt: new Date('2022-05-10 20:00:00'),
+    publishedAt: new Date('2022-05-10 20:00:00'),
     content: [
       { type: 'paragraph', content: 'Fala galeraa 👋' },
       { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
@@ -50,7 +54,7 @@ function App() {
                 key={post.id}
                 author={post.author}
                 content={post.content}
-                publishedAt={post.publishAt}
+                publishedAt={post.publishedAt}
               />
             )
           })}
